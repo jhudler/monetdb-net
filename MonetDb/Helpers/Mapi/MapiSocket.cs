@@ -187,7 +187,7 @@ namespace System.Data.MonetDb.Helpers.Mapi
         /// <param name="redirectUrls"></param>
         /// <param name="user"></param>
         /// <param name="password"></param>
-        private IList<string> FollowRedirects(IReadOnlyList<string> redirectUrls, string user, string password)
+        private IList<string> FollowRedirects(IList<string> redirectUrls, string user, string password)
         {
             var uri = new Uri(redirectUrls[0]);
             var host = uri.Host;

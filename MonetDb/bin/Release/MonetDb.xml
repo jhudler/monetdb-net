@@ -1,0 +1,1446 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Data.MonetDb</name>
+    </assembly>
+    <members>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.ColumnName">
+            <summary>
+            The name of the column; this might not be unique. 
+            If the column name cannot be determined, 
+            a null value is returned. 
+            This name always reflects the most 
+            recent naming of the column in the current view or command text. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.ColumnOrdinal">
+            <summary>
+            The zero-based ordinal of the column. This column cannot contain a null value.
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.ColumnSize">
+            <summary>
+            The maximum possible length of a value in the column. 
+            For columns that use a fixed-length data type, 
+            this is the size of the data type.
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.NumericPrecision">
+            <summary>
+            If <see cref="T:System.Data.DbType"/> is a numeric data type, 
+            this is the maximum precision of the column. 
+            The precision depends on the definition of the column. 
+            If DbType is not a numeric data type, 
+            do not use the data in this column. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.NumericScale">
+            <summary>
+            If <see cref="T:System.Data.DbType"/> is <see cref="F:System.Data.DbType.Decimal"/>, 
+            the number of digits to the right of the decimal point. 
+            Otherwise, this is a null value. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.DataType">
+            <summary>
+            Maps to the .NET Framework type of the column.
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.ProviderType">
+            <summary>
+            The MonetDb column data type name
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.ProviderSpecificDataType">
+            <summary>
+            Returns the provider-specific data type 
+            of the column based on the Type System Version 
+            keyword in the connection string.
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.IsLong">
+            <summary>
+            <code>true</code> if the column contains a 
+            Binary Long Object (BLOB) that contains very long data. 
+            The definition of very long data is driver-specific. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.AllowDbNull">
+            <summary>
+            <code>true</code> if the consumer can 
+            set the column to a null value or 
+            if the driver cannot determine whether 
+            the consumer can set the column to a null value. 
+            Otherwise, <code>false</code>. A column may contain null values, 
+            even if it cannot be set to a null value.
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.IsReadOnly">
+            <summary>
+            <code>true</code> if the column cannot be modified; otherwise <code>false</code>.
+            </summary>
+            <remarks>MonetDB does not support cursor updates, so nothing is writable 
+            and value is always <code>true</code>.
+            </remarks>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.IsRowVersion">
+            <summary>
+            Set if the column contains a persistent row identifier 
+            that cannot be written to, 
+            and has no meaningful value except to identity the row. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.IsUnique">
+            <summary>
+            <code>true</code>: No two rows in the base table 
+            (the table returned in BaseTableName) 
+            can have the same value in this column. 
+            IsUnique is guaranteed to be <code>true</code> 
+            if the column represents a key by itself 
+            or if there is a constraint of type UNIQUE 
+            that applies only to this column. 
+            <code>false</code>: The column can contain duplicate 
+            values in the base table. 
+            The default for this column is <code>false</code>. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.IsKey">
+            <summary>
+            <code>true</code>: The column is one of a set 
+            of columns in the rowset that, 
+            taken together, uniquely identify the row. 
+            The set of columns with IsKey set to <code>true</code> 
+            must uniquely identify a row in the rowset. 
+            There is no requirement that this set of columns 
+            is a minimal set of columns. 
+            This set of columns may be generated from 
+            a base table primary key, a unique constraint, or a unique index. 
+            <code>false</code>: The column is not required to uniquely identify the row. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.IsAutoincrement">
+            <summary>
+            <code>true</code> if the column assigns 
+            values to new rows in fixed increments; 
+            otherwise <code>false</code>. 
+            The default for this column is <code>false</code>.
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.BaseSchemaName">
+            <summary>
+            The name of the schema in the 
+            data source that contains the column. 
+            NULL if the base catalog name cannot be determined. 
+            The default for this column is a null value. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.BaseCatalogName">
+            <summary>
+            The name of the catalog in the data 
+            store that contains the column. 
+            NULL if the base catalog name cannot be determined. 
+            The default for this column is a null value.
+            </summary>
+            <remarks>
+            MonetDB only handles one catalog (dbfarm) at a time
+            </remarks>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.BaseTableName">
+            <summary>
+            The name of the table or view in 
+            the data store that contains the column. 
+            A null value if the base table name cannot be determined. 
+            The default of this column is a null value. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.BaseColumnName">
+            <summary>
+            The name of the column in the data store. 
+            This might be different from the column 
+            name returned in the ColumnName column if an alias was used. 
+            A null value if the base column name cannot 
+            be determined or if the rowset column is derived, 
+            but not identical to, a column in the data store. 
+            The default for this column is a null value. 
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Constants.MonetDbSchemaTableColumns.DataTypeName">
+            <summary>
+            Returns a string representing the MonetDb column data type of the specified column.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Extensions.TypeExt.To``1(System.Object,``0)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="defaultValue"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Extensions.TypeExt.ToSystemType(System.Data.DbType)">
+            <summary>
+            </summary>
+            <param name="dbType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Extensions.TypeExt.GetDbType(System.String)">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Extensions.TypeExt.GetSystemType(System.String)">
+            <summary>
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Extensions.TypeExt.GetDbTypeName(System.Type)">
+            <summary>
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Extensions.EnumerableExt.In``1(System.Collections.Generic.IEnumerable{``0},``0@,``0[])">
+            <summary>
+            Checks, whether source contains one of the listed values
+            </summary>
+            <param name="source">Collection of values to look for</param>
+            <param name="values">Collection of values to look with</param>
+            <param name="which">If return is <c>true</c> then first 
+            interfered value will be assigned to this parameter</param>
+            <returns>Returns <c>true</c> if on of the values contains on of the source value</returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Extensions.EnumerableExt.In(System.String,System.String@,System.String[])">
+            <summary>
+            Checks, whether source exists in the listed values
+            </summary>
+            <param name="source">String to look for</param>
+            <param name="values">Collection of values to look with</param>
+            <param name="which">If return is <c>true</c> then first 
+            interfered value will be assigned to this parameter</param>
+            <returns>Returns <c>true</c> if on of the values contains on of the source value</returns>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.BlockingQueue`1">
+            <summary>
+            Same as Queue except Dequeue function blocks until there is an object to return.
+            Note: This class does not need to be synchronized
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.#ctor(System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Create new BlockingQueue.
+            </summary>
+            <param name="col">The System.Collections.Generic.ICollection&lt;T&gt; to copy elements from</param>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.#ctor(System.Int32)">
+            <summary>
+            Create new BlockingQueue.
+            </summary>
+            <param name="capacity">The initial number of elements that the queue can contain</param>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.#ctor">
+            <summary>
+            Create new BlockingQueue.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Finalize">
+            <summary>
+            BlockingQueue Destructor (Close queue, resume any waiting thread).
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Clear">
+            <summary>
+            Remove all objects from the Queue.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Close">
+            <summary>
+            Remove all objects from the Queue, resume all dequeue threads.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Dequeue">
+            <summary>
+            Removes and returns the object at the beginning of the Queue.
+            </summary>
+            <returns>Object in queue.</returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Dequeue(System.TimeSpan)">
+            <summary>
+            Removes and returns the object at the beginning of the Queue.
+            </summary>
+            <param name="timeout">time to wait before returning</param>
+            <returns>Object in queue.</returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Dequeue(System.Int32)">
+            <summary>
+            Removes and returns the object at the beginning of the Queue.
+            </summary>
+            <param name="timeout">time to wait before returning (in milliseconds)</param>
+            <returns>Object in queue.</returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Enqueue(`0)">
+            <summary>
+            Adds an object to the end of the Queue.
+            </summary>
+            <param name="obj">Object to put in queue</param>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.BlockingQueue`1.Open">
+            <summary>
+            Open Queue.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.BlockingQueue`1.Closed">
+            <summary>
+            Gets flag indicating if queue has been closed.
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType">
+            <summary>
+            Represents the types of data sequences that can be returned from a MonetDB server.
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.Unknown">
+            <summary>
+            "there is currently no line", or the the type is unknown
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.Error">
+            <summary>
+            A line starting with '!'
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.Header">
+            <summary>
+            A line starting with '%'
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.Result">
+            <summary>
+            A line starting with '['
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.Prompt">
+            <summary>
+            A line starting with '.'
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.More">
+            <summary>
+            A line starting with ','
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.SoHeader">
+            <summary>
+            A line starting with '&amp;', indicating the start of a header block
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.Redirect">
+            <summary>
+            A line starting with '^'
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.Mapi.Enums.MonetDbLineType.Info">
+            <summary>
+            A line starting with '#'
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.Mapi.IO.MonetDbStream">
+            <summary>
+            The MonetDB server has it's own protocol for streaming chunked input and output.
+            This is known as the "block" stream.  
+            
+            A byte stream to and from the MonetDB server consists of one or more "blocks".
+            A block is a sequence of bytes, with the first two bytes indicating a 16-bit
+            integer length followed by the length number of bytes of data.  This can go on
+            for as many blocklength+block series are sent from the server, and the end of a 
+            sequence is indicated by a block with the most significant big set to 1 (blockHeader[0] &amp; 0x1) == 1).
+            
+            When reading from the stream we end the sequence with a \n.\n (the first \n is added if not sent
+            by the server).  This makes this class trivial to wrap with a StreamReader and StreamWriter.
+            
+            When writing to the server, we write the terminating block header
+            when the Flush() function is called.  If that's not called, we write out
+            blocks to the server as they're filled.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.IO.MonetDbStream.ReadNextBlock">
+            <summary>
+            Reads the next available block on the provided stream.  Returns the bytes available in the block buffer.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.IO.MonetDbStream.WriteNextBlock(System.Boolean)">
+            <summary>
+            Writes the next block to the provided stream.
+            </summary>
+            <param name="last">If <c>true</c> then we should write out the block header to indicate that this is the end
+            of the sequence.  If <c>false</c> the the server should expect more data.</param>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.Mapi.MonetDbResultEnumerator">
+            <summary>
+            This class process the stream into enumerated list of the MonetDBQueryResponseInfo objects which represent executed
+            statements in the batch. IEnumerable is used to facilitate lazy execution and eliminate the need in materialization
+            of the results returned by the server.
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.Mapi.Protocols.IMapiProtocol">
+            <summary>
+            Interface for defining Mapi protocols
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.Protocols.IMapiProtocol.BuildChallengeResponse(System.String,System.String,System.String,System.String[],System.String,System.String)">
+            <summary>
+            Build challenge response string from input parameters
+            </summary>
+            <param name="userName">Username, may changed if server identifies self as Merovingian</param>
+            <param name="password">Password, hashed password will be returned as out</param>
+            <param name="language">Mapi quering language name</param>
+            <param name="challengeTokens"></param>
+            <param name="database">Database, can be <c>null</c></param>
+            <param name="hash">Default for hashing algorithm will used if set</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.Protocols.MapiProtocolFactory.Register``1(System.Int32)">
+            <summary>
+            Register protocol
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="version"></param>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.Protocols.MapiProtocolFactory.GetProtocol(System.Int32)">
+            <summary>
+            Get protocol implementation by version
+            </summary>
+            <param name="version">Protocol version</param>
+            <returns>IMapiProtocol implementation instance or null</returns>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.Mapi.Protocols.MapiProtocolVersion8">
+            <summary>
+            Mapi protocol version 8
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.Mapi.Protocols.MapiProtocolVersion9">
+            <summary>
+            Mapi protocol version 9
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.MonetDbMetaData._connection">
+            <summary>
+            Parent connection
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.MonetDbMetaData._lock">
+            <summary>
+            Synchronization object
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.MonetDbMetaData._driverVersion">
+            <summary>
+            Driver version
+            </summary>
+        </member>
+        <member name="F:System.Data.MonetDb.Helpers.MonetDbMetaData._environmentVariables">
+            <summary>
+            Environment variables for each connection
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetEnvironmentVariable(System.String)">
+            <summary>
+            Internal cache for environment properties retrieved from the
+            server. To avoid querying the server over and over again, once a
+            value is read, it is kept in a Dictionary for reuse.
+            </summary>
+            <param name="keyName">Environment variable name</param>
+            <returns>
+            Returns environment variable value if set, or <code>string.Empty</code>
+            </returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.IsTransactionIsolationLevelSupported(System.Data.IsolationLevel)">
+            <summary>
+            Does the database support the given transaction isolation level?
+            </summary>
+            <param name="level">Isolation level</param>
+            <returns>
+            <code>true</code> if supported
+            </returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetProcedures(System.String,System.String,System.String)">
+            <summary>
+            Get a description of stored procedures available in a catalog.
+            Currently not applicable and not implemented, returns null
+            </summary>
+            <param name="catalog"></param>
+            <param name="schemaPattern"></param>
+            <param name="procedureNamePattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.EscapeQuotes(System.String)">
+            <summary>
+            Returns the given string where all slashes and single quotes are
+            escaped with a slash.
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetTables(System.String,System.String,System.String,System.String[])">
+            <summary>
+            Get a description of tables available in a catalog.
+            </summary>
+            <param name="catalog">A catalog name. This parameter is currently ignored</param>
+            <param name="schemaPattern">A schema name pattern</param>
+            <param name="tableNamePattern">A table name pattern. For all tables this should be "%"</param>
+            <param name="types">a list of table types to include. Null returns all types. 
+            This parameter is currently ignored</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetSchemas(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="catalog"></param>
+            <param name="schemaPattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetCatalogs">
+            <summary>
+            Get the catalog names available in this database. 
+            The results are ordered by catalog name.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetTableTypes">
+            <summary>
+            Get the table types available in this database.	The results
+            are ordered by table type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetColumns(System.String,System.String,System.String,System.String)">
+            <summary>
+            Get a description of table columns available in a catalog.
+            </summary>
+            <param name="catalog">a catalog name; "" retrieves those without a catalog. Currently ignored</param>
+            <param name="schemaNamePattern">a schema name pattern; "" retrieves those without a schema</param>
+            <param name="tableNamePattern">a table name pattern</param>
+            <param name="columnNamePattern">a column name pattern</param>
+            <returns></returns>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.AllProceduresCallable">
+            <summary>
+            Can all the procedures returned 
+            by <see cref="M:System.Data.MonetDb.Helpers.MonetDbMetaData.GetProcedures(System.String,System.String,System.String)"/> be called by the current user?
+            </summary>
+            <remarks>
+            Always <code>true</code>
+            </remarks>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.AllTablesSelectable">
+            <summary>
+            Can all the tables returned by getTable be SELECTed by the current user?
+            </summary>
+            <remarks>
+            Always <code>true</code> because we only have one user a.t.m.
+            </remarks>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.ConnectionString">
+            <summary>
+            What is the ConnectionString for this database?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.UserName">
+            <summary>
+            What is our user name as known to the database?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.ReadOnly">
+            <summary>
+            Is the database in read-only mode?
+            </summary>
+            <remarks>
+            Always <code>false</code> for now
+            </remarks>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.NullsSortedHigh">
+            <summary>
+            Are NULL values sorted high?
+            </summary>
+            <remarks>
+            Always <code>true</code> because MonetDB puts NULL values on top upon ORDER BY
+            </remarks>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.NullsSortedLow">
+            <summary>
+            Are NULL values sorted low?
+            </summary>
+            <remarks>
+            Always <code>false</code> because MonetDB puts NULL values on top upon ORDER BY.
+            </remarks>
+            <seealso cref="P:System.Data.MonetDb.Helpers.MonetDbMetaData.NullsSortedHigh"/>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.NullsSortedAtStart">
+            <summary>
+            Are NULL values sorted at the start regardless of sort order?
+            </summary>
+            <remarks>
+            Always <code>false</code>, since MonetDB doesn't do this
+            </remarks>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.NullsSortedAtEnd">
+            <summary>
+            Are NULL values sorted at the end regardless of sort order?
+            </summary>
+            <remarks>
+            Always <code>false</code>, since MonetDB doesn't do this
+            </remarks>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.DatabaseProductName">
+            <summary>
+            What is the name of this database product - this should be MonetDB
+            of course, so we return that explicitly.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.DatabaseProductVersion">
+            <summary>
+            What is the version of this database product. 
+            Returns a fixed version number, yes it's quick and dirty
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.DriverName">
+            <summary>
+            What is the name of this JDBC driver?  If we don't know this
+            we are doing something wrong!
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.DriverVersion">
+            <summary>
+            MonetDB driver version
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.SqlKeywords">
+            <summary>
+            Get a comma separated list of all a database's SQL keywords that
+            are NOT also SQL:2003 keywords.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.SearchStringEscape">
+            <summary>
+            This is the string that can be used to escape '_' and '%' in
+            a search string pattern style catalog search parameters
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.ExtraCharacters">
+            <summary>
+            Get all the "extra" characters that can be used in unquoted
+            identifier names(those beyond a-zA-Z0-9 and _)
+            MonetDB has no extras
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.SupportsAlterTableAddColumn">
+            <summary>
+            Is "ALTER TABLE" with an add column supported?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.SupportsAlterTableDropColumn">
+            <summary>
+            Is "ALTER TABLE" with a drop column supported?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.SupportsColumnAlias">
+            <summary>
+            Is column aliasing supported?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.MaxConnections">
+            <summary>
+            How many active connections can we have at a time to this database?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.DefaultTransactionIsolation">
+            <summary>
+            What is the database's default transaction isolation level?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Helpers.MonetDbMetaData.SupportTransactions">
+            <summary>
+            Are transactions supported?	If not, commit and rollback are noops
+            and the isolation level is TRANSACTION_NONE.  We do support
+            transactions.
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Helpers.Mapi.MapiSocket">
+            <summary>
+            MapiSocket is a class for talking to a MonetDB server with the MAPI protocol.
+            MAPI is a line oriented protocol that talks UTF8 so we wrap a TCP socket with
+            StreamReader and StreamWriter streams to handle conversion.
+            
+            MapiSocket logs into the MonetDB server, since the socket is worthless if it's
+            not logged in.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.MapiSocket.Connect(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Connects to a given host.  Returns a list of any warnings from the server.
+            </summary>
+            <param name="host"></param>
+            <param name="port"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="database"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.MapiSocket.GetChallengeResponse(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns a response string that we should send to the MonetDB server upon initial connection.
+            The challenge string is sent from the server in the format (without quotes) "challenge:servertype:protocolversion:"
+            
+            For now we only support protocol version 8.
+            </summary>
+            <param name="challengeString">initial string sent from server to challenge against</param>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="language"></param>
+            <param name="database"></param>
+            <param name="hash">the hash method to use, or null for all supported hashes</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.Helpers.Mapi.MapiSocket.FollowRedirects(System.Collections.Generic.IList{System.String},System.String,System.String)">
+            <summary>
+            We try the first url to redirect to.  It's not great, but realistically
+            we shouldn't get too many redirect urls to redirect to.  Returns all the
+            new warnings from the new connection.
+            </summary>
+            <param name="redirectUrls"></param>
+            <param name="user"></param>
+            <param name="password"></param>
+        </member>
+        <member name="T:System.Data.MonetDb.Models.MonetDbCatalogInfoModel">
+            <summary>
+            Catalog description (used when retreiving meta data)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbCatalogInfoModel.Name">
+            <summary>
+            Catalog name
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Models.MonetDbColumnInfoModel">
+            <summary>
+            Column description (used when retreiving meta data)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Catalog">
+            <summary>
+            Catalog name {may be null}
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Schema">
+            <summary>
+            Schema name (may be null)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Table">
+            <summary>
+            Table name
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Name">
+            <summary>
+            Column name
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.DataType">
+            <summary>
+            Data type name
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.ColumnSize">
+            <summary>
+            Column size. For char or date types 
+            this is the maximum number of characters, 
+            for numeric or decimal types this is precision.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Scale">
+            <summary>
+            The number of fractional digits
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Radix">
+            <summary>
+            Radix (typically either 10 or 2)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Nullable">
+            <summary>
+            Is null allowed?
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Remarks">
+            <summary>
+            Comment describing column (may be null)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.DefaultValue">
+            <summary>
+            Column default value (may be null)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.CharOctetLength">
+            <summary>
+            Maximum number of bytes for char columns
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbColumnInfoModel.Ordinal">
+            <summary>
+            Column ordinal position
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Models.MonetDbFunctionInfoModel">
+            <summary>
+            Function description (used when retreiving meta data)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbFunctionInfoModel.Name">
+            <summary>
+            Function name
+            </summary>
+        </member>
+        <member name="T:MonetDB.Driver.Models.MonetDbProcedureInfoModel">
+            <summary>
+            Procedure description
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Catalog">
+            <summary>
+            Catalog name {may be null)
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Schema">
+            <summary>
+            Schema name (may be null)
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Name">
+            <summary>
+            Procedure name
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Field4">
+            <summary>
+            Reserver field (must be null)
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Field5">
+            <summary>
+            Reserver field (must be null)
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Filed6">
+            <summary>
+            Reserver field (must be null)
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Remarks">
+            <summary>
+            Explanatory comment on the procedure
+            </summary>
+        </member>
+        <member name="P:MonetDB.Driver.Models.MonetDbProcedureInfoModel.Type">
+            <summary>
+            Procedure type
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Models.MonetDbSchemaInfoModel">
+            <summary>
+            Schema description (used when retreiving meta data)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbSchemaInfoModel.Catalog">
+            <summary>
+            Schema catalog
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbSchemaInfoModel.Name">
+            <summary>
+            Schema name
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Models.MonetDbTableInfoModel">
+            <summary>
+            MonetDB table description (used when retreiving meta data)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbTableInfoModel.Catalog">
+            <summary>
+            Table catalog (may be null)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbTableInfoModel.Schema">
+            <summary>
+            Table schema (may be null)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbTableInfoModel.Name">
+            <summary>
+            Table name
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbTableInfoModel.Type">
+            <summary>
+            Table type
+            </summary>
+            <remarks>The valid values for the types parameter are:
+            "TABLE", "INDEX", "SEQUENCE", "VIEW", 
+            "SYSTEM TABLE", "SYSTEM INDEX", "SYSTEM VIEW", 
+            "SYSTEM TOAST TABLE", "SYSTEM TOAST INDEX",
+            "TEMPORARY TABLE", and "TEMPORARY VIEW"
+            </remarks>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbTableInfoModel.Remarks">
+            <summary>
+            Explanatory comment on the table
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.Models.MonetDbTableTypeInfoModel">
+            <summary>
+            Table type description (used when retreiving meta data)
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.Models.MonetDbTableTypeInfoModel.Name">
+            <summary>
+            Table type name
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.MonetDbCommand">
+            <summary>
+            Represents an SQL command to send to a <c>MonetDbConnection</c>
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.#ctor">
+            <summary>
+            Initializes a new command
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.#ctor(System.String)">
+            <summary>
+            Initializes a new command
+            </summary>
+            <param name="cmdText"></param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.#ctor(System.String,System.Data.MonetDb.MonetDbConnection)">
+            <summary>
+            Initializes a new command.
+            </summary>
+            <param name="cmdText"></param>
+            <param name="connection"></param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.#ctor(System.String,System.Data.MonetDb.MonetDbConnection,System.Data.MonetDb.MonetDbTransaction)">
+            <summary>
+            Initializes a new command.
+            </summary>
+            <param name="cmdText"></param>
+            <param name="connection"></param>
+            <param name="transaction"></param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.Cancel">
+            <summary>
+            Attempts to cancels the execution of this <c>MonetDbCommand</c>.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.CreateParameter">
+            <summary>
+            Creates a new instance of an <c>IDbDataParameter</c> object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.ExecuteNonQuery">
+            <summary>
+            Executes an SQL statement against the <c>Connection</c> object of MonetDB data provider, 
+            and returns the number of rows affected.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.ExecuteReader(System.Data.CommandBehavior)">
+            <summary>
+            Executes the <c>CommandText</c> against the <c>Connection</c> and builds an <c>IDataReader</c>.
+            </summary>
+            <param name="behavior"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.ExecuteReader">
+            <summary>
+            Executes the <c>CommandText</c> against the <c>Connection</c> and builds an <c>IDataReader</c>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.ExecuteScalar">
+            <summary>
+            Executes the query, and returns the first column of the first row in the resultset 
+            returned by the query. Extra columns or rows are ignored.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.Prepare">
+            <summary>
+            Creates a prepared (or compiled) version of the command on the data source.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbCommand.Dispose">
+            <summary>
+            Releases the resources used by this command.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbCommand.CommandText">
+            <summary>
+            Gets or sets the text command to run against the MonetDB server.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbCommand.CommandTimeout">
+            <summary>
+            Gets or sets the wait time before terminating the attempt to execute a command and generating an error.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbCommand.CommandType">
+            <summary>
+            Indicates or specifies how the <c>CommandText</c> property is interpreted.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbCommand.Connection">
+            <summary>
+            Gets or sets the <c>IDbConnection</c> used by this instance of the <c>IDbCommand</c>.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbCommand.Parameters">
+            <summary>
+            Gets the IDataParameterCollection.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbCommand.Transaction">
+            <summary>
+            Gets or sets the transaction within which this Command object executes.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbCommand.UpdatedRowSource">
+            <summary>
+            Gets or sets how command results are applied to the <c>DataRow</c> when used by the 
+            <c>Update</c> method of a <c>MonetDbDataAdapter</c>.
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.MonetDbConnection">
+            <summary>
+            Represents an open connection with an MonetDB server.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.#ctor">
+            <summary>
+            Initializes a new connection with the MonetDB server.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.#ctor(System.String)">
+            <summary>
+            Initializes a new connection with the MonetDB server.
+            </summary>
+            <param name="connectionString">
+            The information used to establish a connection.  
+            See <c>ConnectionString</c> for the valid formatting of this parameter.
+            </param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Begins a database transaction with the specified <c>IsolationLevel</c> value.
+            </summary>
+            <param name="isolationLevel">One of the <c>IsolationLevel</c> values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.BeginTransaction">
+            <summary>
+            Begins a database transaction.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.ChangeDatabase(System.String)">
+            <summary>
+            Changes the current database for an open MonetDbConnection object.
+            </summary>
+            <param name="databaseName">
+            The name of the database to use in place of the current database.
+            </param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.Close">
+            <summary>
+            Releases the connection back to the connection pool.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.CreateCommand">
+            <summary>
+            Creates and returns a Command object associated with the connection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.Open">
+            <summary>
+            Opens a database connection with the settings 
+            specified by the <c>ConnectionString</c> property 
+            of the provider-specific Connection object.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnection.Dispose">
+            <summary>
+            Releases the connection back to the connection pool.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbConnection.ConnectionString">
+            <summary>
+            Gets or sets the string used to open a database.
+            </summary>
+            <example>host=localhost;port=50000;username=admin;password=sa;database=demo;ssl=false;poolMinimum=3;poolMaximum=20</example>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbConnection.ConnectionTimeout">
+            <summary>
+            Gets the time to wait while trying to establish a 
+            connection before terminating the attempt and generating an error.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbConnection.Database">
+            <summary>
+            Gets the name of the current database or the 
+            database to be used after a connection is opened.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbConnection.State">
+            <summary>
+            Gets the current state of the connection.
+            </summary>
+        </member>
+        <member name="T:System.Data.MonetDb.MonetDbConnectionFactory">
+            <summary>
+            Handles the accounting for the connections to the database.  Handles the connection
+            pooling of the connections.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbConnectionFactory.GetConnection(System.String,System.Int32,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns a connection from the connection pool.
+            </summary>
+            <param name="host"></param>
+            <param name="port"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="database"></param>
+            <param name="maxConn"></param>
+            <param name="minConn"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Data.MonetDb.MonetDbDataReader">
+            <summary>
+            Provides a means of reading one or more forward-only streams of result sets obtained by executing a command on a MonetDB server
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.Close">
+            <summary>
+            Closes the IDataReader object
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetSchemaTable">
+            <summary>
+            Returns a <c>DataTable</c> that describes the column metadata of the <c>IDataReader</c>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.NextResult">
+            <summary>
+            Advances the data reader to the next result, when reading the results of batch SQL statements.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.Read">
+            <summary>
+            Advances the <c>IDataReader</c> to the next record.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.Dispose">
+            <summary>
+            Closes the data reader
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetBoolean(System.Int32)">
+            <summary>
+            Gets the value of the specified column as a Boolean.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetByte(System.Int32)">
+            <summary>
+            Gets the 8-bit unsigned integer value of the specified column.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads a stream of bytes from the specified column offset into the buffer as an array, starting at the given buffer offset.
+            </summary>
+            <param name="i"></param>
+            <param name="fieldOffset"></param>
+            <param name="buffer"></param>
+            <param name="bufferoffset"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetChar(System.Int32)">
+            <summary>
+            Gets the character value of the specified column.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Reads a stream of characters from the specified column offset into the buffer as an array, starting at the given buffer offset.
+            </summary>
+            <param name="i"></param>
+            <param name="fieldoffset"></param>
+            <param name="buffer"></param>
+            <param name="bufferoffset"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetData(System.Int32)">
+            <summary>
+            Gets an <c>IDataReader</c> to be used when the field points to more remote structured data.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetDataTypeName(System.Int32)">
+            <summary>
+            Gets the data type information for the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetDateTime(System.Int32)">
+            <summary>
+            Gets the date and time data value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetDecimal(System.Int32)">
+            <summary>
+            Gets the fixed-position numeric value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetDouble(System.Int32)">
+            <summary>
+            Gets the double-precision floating point number of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetFieldType(System.Int32)">
+            <summary>
+            Gets the <c>Type</c> information corresponding to the type of <c>Object</c> that would be returned from <c>GetValue</c>.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetFloat(System.Int32)">
+            <summary>
+            Gets the single-precision floating point number of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetGuid(System.Int32)">
+            <summary>
+            Returns the GUID value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetInt16(System.Int32)">
+            <summary>
+            Gets the 16-bit signed integer value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetInt32(System.Int32)">
+            <summary>
+            Gets the 32-bit signed integer value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetInt64(System.Int32)">
+            <summary>
+            Gets the 64-bit signed integer value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetName(System.Int32)">
+            <summary>
+            Gets the name for the field to find.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetOrdinal(System.String)">
+            <summary>
+            Return the index of the named field.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetString(System.Int32)">
+            <summary>
+            Gets the string value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetValue(System.Int32)">
+            <summary>
+            Return the value of the specified field.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.GetValues(System.Object[])">
+            <summary>
+            Gets all the attribute fields in the collection for the current record.
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbDataReader.IsDBNull(System.Int32)">
+            <summary>
+            Return whether the specified field is set to null.
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbDataReader.Depth">
+            <summary>
+            Gets a value indicating the depth of nesting for the current row.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbDataReader.IsClosed">
+            <summary>
+            Gets a value indicating whether the data reader is closed.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbDataReader.RecordsAffected">
+            <summary>
+            Gets the number of rows changed, inserted, or deleted by execution of the SQL statement.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbDataReader.FieldCount">
+            <summary>
+            Gets the number of columns in the current row.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbDataReader.Item(System.String)">
+            <summary>
+            Gets the specified column by column name.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbDataReader.Item(System.Int32)">
+            <summary>
+            Gets the specified column by column index
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Data.MonetDb.MonetDbException">
+            <summary>
+            Exception type of all MonetDB related errors.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbException.#ctor(System.String)">
+            <summary>
+            Initializes a new exception which occurred with MonetDB.
+            </summary>
+            <param name="message">The message that the user should review and may help to determine what went wrong.</param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbException.#ctor(System.String,System.Object[])">
+            <summary>
+            Initializes a new exception which occurred with MonetDB.
+            </summary>
+            <param name="format">String format template for message</param>
+            <param name="args">String format template arguments</param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbException.#ctor(System.Exception,System.String,System.Object[])">
+            <summary>
+            Initializes a new exception which occurred with MonetDB.
+            </summary>
+            <param name="innerException">If this exception is wrapping another exception and throwing it up-level, this is the original exception.</param>
+            <param name="format">String format template for message</param>
+            <param name="args">String format template arguments</param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbException.#ctor(System.Exception,System.String)">
+            <summary>
+            Initializes a new exception which occurred with MonetDB.
+            </summary>
+            <param name="innerException">If this exception is wrapping another exception and throwing it up-level, this is the original exception.</param>
+            <param name="message">The message that the user should review and may help to determine what went wrong.</param>
+        </member>
+        <member name="T:System.Data.MonetDb.MonetDbTransaction">
+            <summary>
+            Represents a local transaction.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbTransaction.#ctor(System.Data.MonetDb.MonetDbConnection,System.Data.IsolationLevel)">
+            <summary>
+            Initializes a new transaction with the MonetDB server with this particular connection.
+            </summary>
+            <param name="connection"></param>
+            <param name="isolationLevel"></param>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbTransaction.CheckConnection">
+            <summary>
+            Checks connection
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbTransaction.Start">
+            <summary>
+            Start the database transaction
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbTransaction.Commit">
+            <summary>
+            Commits the database transaction.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbTransaction.Rollback">
+            <summary>
+            Rolls back a transaction from a pending state.
+            </summary>
+        </member>
+        <member name="M:System.Data.MonetDb.MonetDbTransaction.Dispose">
+            <summary>
+            Rolls back the transaction (if uncommited) 
+            and releases the resources that were used for the transaction.
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbTransaction.Connection">
+            <summary>
+            Specifies the Connection object to associate with the transaction
+            </summary>
+        </member>
+        <member name="P:System.Data.MonetDb.MonetDbTransaction.IsolationLevel">
+            <summary>
+            Specifies the <c>IsolationLevel</c> for this transaction
+            </summary>
+        </member>
+    </members>
+</doc>

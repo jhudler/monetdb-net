@@ -34,7 +34,29 @@ namespace System.Data.MonetDb.Helpers.Mapi
 
         private static IEnumerable<string> SplitCommaTabs(string s)
         {
-            return s.Split(',').Select(v => v.Trim(' ', '\t'));
+            return s.Split(',').Select(v => TrimValue(v));
+        }
+
+        private static string TrimValue(string value)
+        {
+            value = value.Trim(' ', '\t');
+            value = UnwrapQuotes(value);
+
+            return value;
+        }
+
+        private static string UnwrapQuotes(string strValue)
+        {
+            // Take off outer quotes: {"string"} will turn into {string}, {""string2""} will turn into {"string2"}
+            if (strValue.Substring(0,1) == "\"" &&
+                strValue.Substring(strValue.Length - 1, 1) == "\"")
+            {
+                strValue = strValue.Substring(1, strValue.Length - 2);
+            }
+
+            strValue = strValue.Replace((string)"\\\"", (string)"\"");  // Replace \" by "
+
+            return strValue;
         }
 
         private static IEnumerable<string> ExtractValuesList(string s, string start, string end)

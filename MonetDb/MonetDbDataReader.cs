@@ -215,7 +215,7 @@ namespace System.Data.MonetDb
         /// <returns></returns>
         public DataTable GetSchemaTable()
         {
-            return _schemaTable??(_schemaTable = GenerateSchemaTable());
+            return _schemaTable ?? (_schemaTable = GenerateSchemaTable());
         }
 
         /// <summary>
@@ -273,10 +273,17 @@ namespace System.Data.MonetDb
         {
             while (_responeInfoEnumerator.MoveNext())
             {
-                while (_enumerator.MoveNext())
+                var dataEnumerable = _responeInfoEnumerator.Current.Data;
+                if (dataEnumerable != null)
                 {
+                    using (var dataEnumerator = dataEnumerable.GetEnumerator())
+                    {
+                        while (dataEnumerator.MoveNext())
+                        {
+                        }
+                    };
+                    this._enumerator.Dispose();
                 }
-                _enumerator.Dispose();
             }
             _responeInfoEnumerator.Dispose();
         }
@@ -408,7 +415,31 @@ namespace System.Data.MonetDb
         /// <returns></returns>
         public Type GetFieldType(int i)
         {
-            throw new Exception("The method or operation is not implemented.");
+            switch (_responseInfo.Columns[i].DataType)
+            {
+                case "smallint":
+                    return typeof(Int16);
+
+                case "int":
+                    return typeof(Int32);
+
+                case "bigint":
+                    return typeof(Int64);
+                    
+                case "double":
+                    return typeof(System.Double);
+                    
+                case "real":
+                    return typeof(System.Single);
+
+                case "timestamp":
+                case "date":
+                case "time":
+                    return typeof(System.DateTime);
+
+                default:
+                    return typeof(System.String);
+            }
         }
 
         /// <summary>
@@ -528,7 +559,13 @@ namespace System.Data.MonetDb
         /// <returns></returns>
         public int GetValues(object[] values)
         {
-            throw new Exception("The method or operation is not implemented.");
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = this.GetValue(i);
+            }
+
+            return values.Length;
+            //throw new Exception("The method or operation is not implemented.");
         }
 
         /// <summary>

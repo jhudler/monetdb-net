@@ -1,0 +1,7 @@
+C:\usd\jonatas\Lab\MonetDbProvider\monetdb-net\MonetDb\bin\Release\MonetDb.xml
+C:\usd\jonatas\Lab\MonetDbProvider\monetdb-net\MonetDb\bin\System.Data.MonetDb.dll
+C:\usd\jonatas\Lab\MonetDbProvider\monetdb-net\MonetDb\bin\System.Data.MonetDb.pdb
+C:\usd\jonatas\Lab\MonetDbProvider\monetdb-net\MonetDb\bin\MonetDb.xml
+C:\usd\jonatas\Lab\MonetDbProvider\monetdb-net\MonetDb\obj\Debug\System.Data.MonetDb.dll
+C:\usd\jonatas\Lab\MonetDbProvider\monetdb-net\MonetDb\obj\Debug\System.Data.MonetDb.pdb
+C:\usd\jonatas\Lab\MonetDbProvider\monetdb-net\MonetDb\obj\Debug\System.Data.MonetDb.csprojResolveAssemblyReference.cache
